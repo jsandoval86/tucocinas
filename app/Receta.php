@@ -9,7 +9,7 @@ use App\Ingrediente;
 use App\Paso;
 use App\Consejo;
 use App\Imagen;
-use App\Receta;
+use App\User;
 
 class Receta extends Model
 {
@@ -56,6 +56,6 @@ class Receta extends Model
 	* relacion con usuario
 	*/
 	public function usuario() {
-		return $this->hasOne(Receta::class);
+		return $this->belongsTo(User::class);
 	}
 }

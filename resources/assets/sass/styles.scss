@@ -1,1 +1,24 @@
-@import "bootstrap"
+@import "normalize";
+@import "bootstrap";
+
+
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.receta-card {
+	border-bottom: 2px solid gainsboro;
+	padding-bottom: 20px;
+}
+
+.receta-card-header {
+	padding: 10px 10px;
+}
+
+.receta-imagen {
+	width: 100%;
+}
+
+.receta-fecha-wrapper {
+	text-align: right;
+}

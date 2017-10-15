@@ -24,7 +24,7 @@ class CreateTableReceta extends Migration
 				$table->time('duracion');
 				$table->boolean('es_publicada')->default(false);
 				$table->integer('categoria_id')->unsigned();
-				$table->integer('usuario_id')->unsigned();
+				$table->integer('usuario_id')->unsigned()->nullable();
 				$table->timestamps();
 			});
 

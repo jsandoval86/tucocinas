@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('css/styles.css')}}">
 	@yield('head')
 </head>
 <body>
