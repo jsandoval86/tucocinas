@@ -1,0 +1,26 @@
+{
+	"name": "tucocinas",
+	"version": "1.0.0",
+	"description": "web app movil para postear recetas de cocina",
+	"main": "index.js",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bootstrap": "^3.3.7",
+		"jquery": "^3.2.1"
+	},
+	"devDependencies": {
+		"browserify": "^14.4.0",
+		"gulp": "^3.9.1",
+		"gulp-sass": "^3.1.0",
+		"gulp-uglify": "^3.0.0",
+		"vinyl-buffer": "^1.0.0",
+		"vinyl-source-stream": "^1.1.0"
+	}
+}
