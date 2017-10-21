@@ -6,7 +6,12 @@
 	@yield('head')
 </head>
 <body>
-	@yield('bar')
+	<div class="nav-bar">
+		<div class="col-xs-10"></div>
+		<div class="col-xs-2" style="text-align: center;">
+			<span class="glyphicon glyphicon-menu-hamburger primary-color-text button-menu"></span>
+		</div>
+	</div>
 	@yield('content')
 	@yield('footer')
 </body>

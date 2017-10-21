@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('content')
-	<h2>Recetas...</h2>
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>Recetas...</h2>
+		</div>
+	</div>
 	@if(count($recetas))
 		@foreach($recetas as $receta)
 			<div class="receta-card">
