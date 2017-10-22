@@ -11,6 +11,9 @@ $secondary-text-color: #757575;
 $divider-color:				 #BDBDBD;
 
 
+$side-bar-width: 280px;
+$side-bar-color: #FFFFFF;
+
 .primary-color {
 	color : $primary-color;
 }
@@ -65,12 +68,34 @@ $divider-color:				 #BDBDBD;
 }
 
 .nav-bar {
-	width: 100%;
+	background: $primary-color;
 	height: 65px;
 	padding: 10px 5px;
-	background: $primary-color;
+	position: fixed;
+	width: 100%;
+	z-index: 2;
 }
 
 .button-menu {
 	font-size: 30px;
+}
+
+.side-bar {
+	background: $side-bar-color;
+	height: 100%;
+	position: fixed;
+	width: $side-bar-width;
+	z-index: 3;
+	/*left: - $side-bar-width;*/
+	display: none;
+}
+
+.side-bar-top {
+	min-height: 200px;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.menu-lista {
+	font-size: 18px;
 }
