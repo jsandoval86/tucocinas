@@ -16,3 +16,10 @@ Route::get('/','InicioController@inicio')
 
 Route::get('/receta/{idReceta}', 'RecetaController@detalle')
 	->name('receta_detalle');
+
+// Social Auth
+Route::get('/auth/facebook', 'SocialAuthController@facebook')
+	->name('auth_facebook');
+
+Route::get('/auth/facebook/callback', 'SocialAuthController@facebookCallback')
+	->name('auth_facebook_callback');
