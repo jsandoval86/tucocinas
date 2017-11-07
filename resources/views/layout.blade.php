@@ -20,7 +20,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-6">
-					<a href="#" class="btn btn-link">Registrarse</a>
+					<a href="{{URL::route('registro')}}" class="btn btn-link">Registrarse</a>
 				</div>
 				<div class="col-xs-6">
 					<a href="#" class="btn btn-default">Ingresar</a>
@@ -31,7 +31,11 @@
 			@include('menu')
 		</div>
 	</div>
-	@yield('content')
+
+	<div class="content">
+		@yield('content')
+	</div>
+
 	@yield('footer')
 </body>
 <script type="text/javascript" src="{{URL::asset('js/bundle.js')}}"></script>

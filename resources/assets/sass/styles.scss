@@ -9,10 +9,19 @@ $accent-color:				 #FF5722;
 $primary-text-color:	 #212121;
 $secondary-text-color: #757575;
 $divider-color:				 #BDBDBD;
+$color-text-icons: #FFFFFF;
+
+$fb-color: #365899;
 
 
 $side-bar-width: 280px;
 $side-bar-color: #FFFFFF;
+$navbar-heigh: 65px;
+
+h1, h2, h3, h4 {
+	margin: 0;
+}
+
 
 .primary-color {
 	color : $primary-color;
@@ -68,9 +77,15 @@ $side-bar-color: #FFFFFF;
 	text-align: right;
 }
 
+.divider {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid $divider-color;
+}
+
 .nav-bar {
 	background: $primary-color;
-	height: 65px;
+	height: $navbar-heigh;
 	padding: 10px 5px;
 	position: fixed;
 	width: 100%;
@@ -99,4 +114,38 @@ $side-bar-color: #FFFFFF;
 
 .menu-lista {
 	font-size: 18px;
+}
+
+.content { 
+	padding-top: $navbar-heigh;
+}
+
+.registro-titulo {
+	color: $primary-text-color;
+	margin-top: 15px;
+	text-align: center;
+}
+
+.registro-subtitulo {
+	color: $secondary-text-color;
+	text-align: center;
+}
+
+.registro-boton {
+	background-color: $divider-color;
+	color: $color-text-icons;
+}
+
+.registro-form {
+	padding: 20px 0px 0px 0px;
+}
+
+.registro-fb-wrapper {
+	text-align: center;
+}
+
+.registro-fb-boton {
+	background-color: $fb-color;
+	color: $color-text-icons;
+	padding: 10px 30px;
 }
