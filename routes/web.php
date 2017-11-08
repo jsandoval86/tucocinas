@@ -27,3 +27,6 @@ Route::get('/auth/facebook/callback', 'SocialAuthController@facebookCallback')
 Route::get('/registro', function() {
 	return view('registro');
 })->name('registro');
+
+Route::post('/registro', 'Auth\RegisterController@register')
+	->name('registrarse');

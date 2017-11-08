@@ -9,7 +9,7 @@
 			{{session('status')}}
 			</div>
 		@endif
-		<form class="registro-form">
+		<form class="registro-form" method="POST" action="{{URL::route('registrarse')}}">
 			<div class="form-group">
 				<label for="nombre">Nombre:</label>
 				<input type="text" name="nombre" class="form-control" required>
