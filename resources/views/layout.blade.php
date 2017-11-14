@@ -15,16 +15,31 @@
 
 	<div class="side-bar" id="sideBar">
 		<div class="side-bar-top">
-			<div class="row">
-				<h3>Tu Cocinas</h3>
-			</div>
-			<div class="row">
-				<div class="col-xs-6">
-					<a href="{{URL::route('registro')}}" class="btn btn-link">Registrarse</a>
+			<h3 class="side-bar-top-title">Tu Cocinas</h3>
+			<div class="side-bar-top-content">
+
+			@if(!Auth::user())
+				<div class="row">
+					<div class="col-xs-6">
+						<a href="{{URL::route('registro')}}" class="btn btn-link">Registrarse</a>
+					</div>
+					<div class="col-xs-6">
+						<a href="{{URL::route('ingreso')}}" class="btn btn-default">Ingresar</a>
+					</div>
 				</div>
-				<div class="col-xs-6">
-					<a href="#" class="btn btn-default">Ingresar</a>
+			@else
+				<div class="row">
+					<p class="menu-usuario">
+						<a href="#" class="menu-usuario-nombre">
+							{{Auth::user()->obtenerNombreCompleto()}}
+						</a>
+					</p>
 				</div>
+				<div class="row">
+					<a href="{{URL::route('logout')}}" class="btn btn-default">Salir</a>
+				</div>
+			@endif
+
 			</div>
 		</div>
 		<div class="row">

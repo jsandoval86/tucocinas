@@ -30,3 +30,16 @@ Route::get('/registro', function() {
 
 Route::post('/registro', 'Auth\RegisterController@register')
 	->name('registrarse');
+
+// login vista
+Route::get('/ingreso', function() {
+	return view('ingreso');
+})->name('ingreso');
+
+// login function
+Route::post('/login', 'Auth\LoginController@login')
+	->name('ingresar');
+
+// logout
+Route::get('/logout','Auth\LoginController@logout')
+	->name('logout');

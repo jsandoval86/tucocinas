@@ -58,6 +58,10 @@ class User extends Authenticatable
 		return $this->hasMany(SocialUser::class);
 	}
 
+	public function obtenerNombreCompleto() {
+		return $this->nombre.' '.$this->apellido;
+	}
+
 	/**
 	* registrar usuario facebook
 	* @param Object usuarioFacebook

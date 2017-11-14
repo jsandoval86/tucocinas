@@ -51,7 +51,7 @@ class RegisterController extends Controller
 			'nombre' => 'required|string|max:255',
 			'email' => 'required|string|email|max:255|unique:users',
 			'username' => 'required|string|unique:users',
-			'password' => 'required|string|min:6|confirmed',
+			'password' => 'required|string|min:6',
 		]);
 	}
 
@@ -63,7 +63,6 @@ class RegisterController extends Controller
 	 */
 	protected function create(array $data)
 	{
-		dd($data);
 		return User::create([
 			'nombre' => $data['nombre'],
 			'username' => $data['username'],

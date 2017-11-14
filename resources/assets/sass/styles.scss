@@ -132,7 +132,7 @@ h1, h2, h3, h4 {
 }
 
 .registro-boton {
-	background-color: $divider-color;
+	background-color: $secondary-text-color;
 	color: $color-text-icons;
 }
 
@@ -148,4 +148,25 @@ h1, h2, h3, h4 {
 	background-color: $fb-color;
 	color: $color-text-icons;
 	padding: 10px 30px;
+}
+
+.side-bar-top-content {
+	padding: 15px;
+}
+
+.menu-usuario-nombre {
+	color: $primary-text-color;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.ingreso-titulo {
+	margin-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.ingreso-btn {
+	background-color: $secondary-text-color;
+	color: $color-text-icons;
 }
