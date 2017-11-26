@@ -7,7 +7,9 @@
 </head>
 <body>
 	<div class="nav-bar">
-		<div class="col-xs-10"></div>
+		<div class="col-xs-10">
+			@yield('nav-actions')
+		</div>
 		<div class="col-xs-2" style="text-align: center;">
 			<span class="glyphicon glyphicon-menu-hamburger primary-color-text button-menu" id="menu-button"></span>
 		</div>
@@ -24,7 +26,7 @@
 						<a href="{{URL::route('registro')}}" class="btn btn-link">Registrarse</a>
 					</div>
 					<div class="col-xs-6">
-						<a href="{{URL::route('ingreso')}}" class="btn btn-default">Ingresar</a>
+						<a href="{{URL::route('login')}}" class="btn btn-default">Ingresar</a>
 					</div>
 				</div>
 			@else

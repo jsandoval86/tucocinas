@@ -18,10 +18,10 @@ class CreateTableReceta extends Migration
 				$table->increments('id');
 				$table->string('nombre');
 				$table->string('descripcion');
-				$table->integer('num_personas_min');
-				$table->integer('num_personas_max');
+				$table->integer('num_personas_min')->nullable();
+				$table->integer('num_personas_max')->nullable();
 				$table->decimal('costo', 10, 2);
-				$table->time('duracion');
+				$table->string('duracion')->nullable();
 				$table->boolean('es_publicada')->default(false);
 				$table->integer('categoria_id')->unsigned();
 				$table->integer('usuario_id')->unsigned()->nullable();

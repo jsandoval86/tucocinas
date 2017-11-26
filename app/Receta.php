@@ -13,6 +13,9 @@ use App\User;
 
 class Receta extends Model
 {
+
+	public static $MSG_ERR_GUARDAR = 'Ocurrio un error al guardar la receta, intente luego';
+
 	/**
 	*/
 	protected $table = 'receta';

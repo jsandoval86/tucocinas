@@ -1,6 +1,8 @@
 
 <div class="list-group menu-lista">
-	<a href="#" class="list-group-item glyphicon glyphicon-cutlery">
+	<a 
+		href="{{URL::route('descripcion_receta_vista')}}" 
+		class="list-group-item glyphicon glyphicon-cutlery">
 		Creando Mi receta
 	</a>
 	<a href="#" class="list-group-item glyphicon glyphicon glyphicon-th-list">

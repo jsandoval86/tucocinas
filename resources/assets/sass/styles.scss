@@ -22,6 +22,13 @@ h1, h2, h3, h4 {
 	margin: 0;
 }
 
+ul{
+	list-style: none;
+}
+
+textarea {
+	resize: none;
+}
 
 .primary-color {
 	color : $primary-color;
@@ -168,5 +175,65 @@ h1, h2, h3, h4 {
 
 .ingreso-btn {
 	background-color: $secondary-text-color;
+	color: $color-text-icons;
+}
+
+.estado-receta-titulo {
+	text-align: center;
+	font-size: 28px;
+	margin-top: 15px;
+	padding-bottom: 30px;
+}
+
+.estado-receta-item {
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+.estado-receta-lista {
+	a { 
+		color: $primary-text-color;
+	}
+}
+
+.estado-receta-item-paso {
+	padding: 5px 10px;
+	border: 1px solid;
+	border-radius: 50px;
+}
+
+.estado-receta-items-wrapper {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.estado-receta-iniciar {
+	background-color: $accent-color;
+	color: $color-text-icons;
+
+}
+
+.container-float-acciones {
+	text-align: right;
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	padding-bottom: 40px;
+	padding-right: 30px;
+}
+
+.receta-descripcion-form {
+	padding-top: 20px;
+}
+
+.receta-descripcion-boton {
+	background-color: $accent-color;
+	width: 100%;
+	color: $color-text-icons;
+}
+
+.receta-navbar-title {
+	padding-top: 15px;
+	font-weight: bold;
 	color: $color-text-icons;
 }

@@ -34,7 +34,7 @@ Route::post('/registro', 'Auth\RegisterController@register')
 // login vista
 Route::get('/ingreso', function() {
 	return view('ingreso');
-})->name('ingreso');
+})->name('login');
 
 // login function
 Route::post('/login', 'Auth\LoginController@login')
@@ -43,3 +43,20 @@ Route::post('/login', 'Auth\LoginController@login')
 // logout
 Route::get('/logout','Auth\LoginController@logout')
 	->name('logout');
+
+// Estado receta
+Route::get('/estado-receta/{idReceta}', 'RecetaController@estadoReceta')
+	->name('estado_receta');
+
+// descripcion receta vista
+Route::get('/receta-descripcion', 'RecetaController@guardarDescripcionVista')
+	->name('descripcion_receta_vista')
+	->middleware('auth');
+
+// descripcion receta 
+Route::post('/receta-descripcion', 'RecetaController@guardarDescripcion')
+	->name('crear_descripcion_vista');
+
+// Cargar imagen vista
+Route::get('/receta-imagen', 'RecetaController@guardarImagenVista')
+	->name('imagen_receta_vista');
