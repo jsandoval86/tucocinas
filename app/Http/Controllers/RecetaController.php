@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Receta;
 use App\Categoria;
 use App\Helper\Constantes;
+use App\Imagen;
 
 class RecetaController extends Controller
 {
@@ -93,13 +94,15 @@ class RecetaController extends Controller
 
 			// retornar error
 			return back()
-				->with('status', Receta::$MSG_ERR_GUARDARSS)
+				->with('status', Receta::$MSG_ERR_GUARDAR)
 				->with('status-type', 'alert-danger');
 		}
 
 		// redireccionar a cargar imagen
 		return redirect()
-			->route('imagen_receta_vista');
+			->route('imagen_receta_vista', [
+					'idReceta' => $receta->id
+				]);
 	}
 
 	/**
@@ -121,8 +124,69 @@ class RecetaController extends Controller
 	* Guardar Imagen Vista
 	* @param Request $request
 	*/
-	public function guardarImagenVista(Request $request) {
-		return view('imagenes_receta');
+	public function guardarImagenVista(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+
+		if (is_null($receta)) {
+			return 'Error 404';
+		}
+
+		return view('imagenes_receta', [
+			'receta' => $receta
+		]);
+	}
+
+
+	/**
+	* Guardar Imagen
+	* @param Request $request
+	*/
+	public function guardarImagen(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+
+		if (is_null($receta)) {
+			return 'Error 404';
+		}
+
+		// validar imagen
+		$this->validarGuardarImagen($request);
+
+		// obtener imagen
+		$imagen = $request->file('imagen');
+		// guardar y obtener ruta
+		$rutaImagen = Receta::guardarImagen($imagen);
+
+		$imagenReceta = new Imagen();
+		$imagenReceta->receta_id = $receta->id;
+		$imagenReceta->ruta = $rutaImagen;
+
+		try {
+			$imagenReceta->save();
+		}
+		catch(Exception $e) {
+			// logging
+			Log::error($e->getMessage());
+			// retornar error
+			return back()
+				->with('status', Receta::$MSG_ERR_GUARDAR_IMG)
+				->with('status-type', 'alert-danger');
+		}
+
+		// redireccionar a Ingredientes
+
+	}
+
+	/**
+	* Validar imagen
+	* @param Request $request
+	*/
+	private function validarGuardarImagen(Request $request) {
+		// rules
+		$this->validate($request, [
+			'imagen' => 'required|image'
+		]);
 	}
 
 }

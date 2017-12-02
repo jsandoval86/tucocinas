@@ -2,7 +2,7 @@
 <div class="list-group menu-lista">
 	<a 
 		href="{{URL::route('inicio')}}"
-		class="list-group-item glyphicon glyphicon-cutlery" 
+		class="list-group-item glyphicon" 
 		>
 		Inicio
 	</a>

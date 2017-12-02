@@ -53,10 +53,14 @@ Route::get('/receta-descripcion', 'RecetaController@guardarDescripcionVista')
 	->name('descripcion_receta_vista')
 	->middleware('auth');
 
-// descripcion receta 
+// guardar descripcion receta 
 Route::post('/receta-descripcion', 'RecetaController@guardarDescripcion')
 	->name('crear_descripcion_vista');
 
 // Cargar imagen vista
-Route::get('/receta-imagen', 'RecetaController@guardarImagenVista')
+Route::get('/receta/{idReceta}/imagen', 'RecetaController@guardarImagenVista')
 	->name('imagen_receta_vista');
+
+// guardar imagen receta
+Route::post('/receta/{idReceta}/imagen', 'RecetaController@guardarImagen')
+	->name('crear_imagen_receta');

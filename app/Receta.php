@@ -16,6 +16,8 @@ class Receta extends Model
 
 	public static $MSG_ERR_GUARDAR = 'Ocurrio un error al guardar la receta, intente luego';
 
+	public static $MSG_ERR_GUARDAR_IMG = 'Ocurrio un error al guardar la imagen, intente luego';
+
 	/**
 	*/
 	protected $table = 'receta';
@@ -60,5 +62,9 @@ class Receta extends Model
 	*/
 	public function usuario() {
 		return $this->belongsTo(User::class);
+	}
+
+	public static function guardarImagen() {
+		return '/ruta';
 	}
 }
