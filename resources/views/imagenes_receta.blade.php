@@ -8,7 +8,7 @@
 
 @section('content')
 	<div class="container">
-		<form method="POST" 
+		<form id="recetaSubirImagen" method="POST" 
 			action="{{URL::route('crear_imagen_receta', ['idReceta' => $receta->id])}}"
 			class="receta-imagenes-form"
 			enctype="multipart/form-data" 
@@ -28,7 +28,9 @@
 			<div style="text-align: center;padding: 50px;">
 				<span class="glyphicon glyphicon-cloud-upload" style="font-size: 100px;display: block;padding-bottom: 30px; color: #757575;">
 				</span>
-				<span>Subir imagen de receta</span>
+				<span id="nombreArchivo">
+					Subir imagen de receta
+				</span>
 			</div>
 			<div class="form-group" style="text-align: center;">
 				<label
