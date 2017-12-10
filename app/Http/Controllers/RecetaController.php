@@ -155,15 +155,17 @@ class RecetaController extends Controller
 
 		// obtener imagen
 		$imagen = $request->file('imagen');
-		// guardar y obtener ruta
-		$rutaImagen = Receta::guardarImagen($imagen);
-
-		$imagenReceta = new Imagen();
-		$imagenReceta->receta_id = $receta->id;
-		$imagenReceta->ruta = $rutaImagen;
 
 		try {
+
+			// guardar y obtener ruta
+			$rutaImagen = Receta::guardarImagen($imagen);
+
+			$imagenReceta = new Imagen();
+			$imagenReceta->receta_id = $receta->id;
+			$imagenReceta->ruta = $rutaImagen;
 			$imagenReceta->save();
+
 		}
 		catch(Exception $e) {
 			// logging
@@ -171,7 +173,7 @@ class RecetaController extends Controller
 			// retornar error
 			return back()
 				->with('status', Receta::$MSG_ERR_GUARDAR_IMG)
-				->with('status-type', 'alert-danger');
+				->with('status-type', Constantes::$STATUS_DANGER);
 		}
 
 		// redireccionar a Ingredientes
