@@ -177,7 +177,10 @@ class RecetaController extends Controller
 		}
 
 		// redireccionar a Ingredientes
-
+		return redirect()
+			->route('ingredientes_receta_vista', [
+					'idReceta' => $receta->id
+				]);
 	}
 
 	/**
@@ -188,6 +191,22 @@ class RecetaController extends Controller
 		// rules
 		$this->validate($request, [
 			'imagen' => 'required|image'
+		]);
+	}
+
+	/**
+	* Vista para guardar recetas
+	*/
+	public function guardarIngredientesVista(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+
+		if (is_null($receta)) {
+			return 'Error 404';
+		}
+
+		return view('ingredientes_receta', [
+			'receta' => $receta
 		]);
 	}
 

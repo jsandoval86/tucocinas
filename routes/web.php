@@ -55,12 +55,21 @@ Route::get('/receta-descripcion', 'RecetaController@guardarDescripcionVista')
 
 // guardar descripcion receta 
 Route::post('/receta-descripcion', 'RecetaController@guardarDescripcion')
-	->name('crear_descripcion_vista');
+	->name('crear_descripcion_vista')
+	->middleware('auth');
 
 // Cargar imagen vista
 Route::get('/receta/{idReceta}/imagen', 'RecetaController@guardarImagenVista')
-	->name('imagen_receta_vista');
+	->name('imagen_receta_vista')
+	->middleware('auth');
 
 // guardar imagen receta
 Route::post('/receta/{idReceta}/imagen', 'RecetaController@guardarImagen')
-	->name('crear_imagen_receta');
+	->name('crear_imagen_receta')
+	->middleware('auth');
+
+// ingredientes receta vista
+Route::get('/receta/{idReceta}/ingredientes', 'RecetaController@guardarIngredientesVista')
+	->name('ingredientes_receta_vista')
+	->middleware('auth');
+

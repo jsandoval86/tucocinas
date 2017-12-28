@@ -269,3 +269,32 @@ textarea {
 .receta-imagenes-titulo {
 	text-align: center;
 }
+
+.receta-ingredientes-crear {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.receta-ingrediente-boton {
+	margin: 5px;
+}
+
+.receta-ingredientes-form {
+	text-align: right;
+}
+
+.receta-ingredientes-lista {
+	margin: 0;
+	padding: 0;
+}
+
+.receta-ingredientes-item {
+
+	border-bottom: 1px solid gainsboro;
+	padding: 5px;
+
+	.receta-ingredientes-item-descripcion-wrapper {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+}
