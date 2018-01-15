@@ -30,6 +30,11 @@ textarea {
 	resize: none;
 }
 
+.btn-success-confirm {
+	background-color: $accent-color;
+	color: $primary-color-text
+}
+
 .btn-file {
 	position: relative;
 	overflow: hidden;
@@ -297,4 +302,13 @@ textarea {
 		padding-left: 0 !important;
 		padding-right: 0 !important;
 	}
+}
+
+.receta-ingredientes-item-borrar {
+	padding: 10px;
+	text-decoration: none !important;
+}
+
+.modal-dialog{
+	top:20%;
 }

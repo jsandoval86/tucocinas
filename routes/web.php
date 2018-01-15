@@ -73,3 +73,7 @@ Route::get('/receta/{idReceta}/ingredientes', 'RecetaController@guardarIngredien
 	->name('ingredientes_receta_vista')
 	->middleware('auth');
 
+// guardar ingrediente receta
+Route::post('/receta/{idReceta}/ingredientes', 'RecetaController@guardarIngredientes')
+	->name('crear_ingredientes_receta')
+	->middleware('auth');

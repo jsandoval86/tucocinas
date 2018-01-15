@@ -9,6 +9,7 @@ use App\Receta;
 use App\Categoria;
 use App\Helper\Constantes;
 use App\Imagen;
+use App\Ingrediente;
 
 class RecetaController extends Controller
 {
@@ -206,8 +207,55 @@ class RecetaController extends Controller
 		}
 
 		return view('ingredientes_receta', [
-			'receta' => $receta
+			'receta' => $receta,
+			'ingredientes' => $receta->ingredientes
 		]);
 	}
+
+	/**
+	* validar ingredientes
+	*/
+	public function validarGuardarIngrediente(Request $request) {
+			// reglas
+		$this->validate($request, [
+			'nombre' => 'required'
+		]);
+	}
+
+	/**
+	* Guardar ingrediente
+	*/
+	public function guardarIngredientes(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+		// validar
+		if (is_null($receta)) {
+			return '404';
+		}
+
+		$this->validarGuardarIngrediente($request);
+
+		$ingrediente = new Ingrediente();
+		$ingrediente->nombre = $request->input('nombre');
+		$ingrediente->receta_id = $receta->id;
+
+		try{
+			$ingrediente->save();
+		}
+		catch(Exception $e) {
+			Log::error(Ingrediente::$ERROR_GUARDAR. $e->getMessage());
+			return back()
+				->with('status', Ingrediente::$ERROR_GUARDAR)
+				->with('status-type', Constantes::$STATUS_DANGER);
+		}
+
+		return redirect()
+			->route('ingredientes_receta_vista', ['idReceta' => $receta->id])
+			->with('status', Ingrediente::$EXITO_GUARDAR_HUM)
+			->with('status-type', Constantes::$STATUS_SUCCESS);
+
+	}
+
+
 
 }

@@ -1,7 +1,18 @@
 var $ = jQuery = require('jquery'),
-	bootstrap = require('bootstrap')
+	bootstrap = require('bootstrap'),
+	bootbox = require('bootbox')
 
 var sideBar = jQuery('#sideBar')
+var botonesConfirmacion = {
+	confirm: {
+		label: 'Ok',
+		className: 'btn-success-confirm'
+	},
+	cancel: {
+		label: 'No',
+		className: 'btn-default'
+	}
+}
 
 $('#menu-button').click(function () {
 	sideBar.toggle()
@@ -34,3 +45,22 @@ $(':file').on('fileselect', function(event, numFiles, label) {
 	)
 
 });
+
+/**
+* Eliminar ingrediente
+*/
+$('.receta-ingredientes-item-borrar').on('click', function(){
+	console.log('asasas')
+	var MESSAGE = 'Quieres borrar este ingrediente?'
+	// Abrir ventana de confirmación
+	bootbox.confirm({
+		size: 'small',
+		message: MESSAGE,
+		buttons: botonesConfirmacion,
+		callback: function(result) {
+			if(result) {
+				console.log('Borrando ingrediente...')
+			}
+		}
+	})
+})
