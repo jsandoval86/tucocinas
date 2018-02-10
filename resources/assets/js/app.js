@@ -50,16 +50,32 @@ $(':file').on('fileselect', function(event, numFiles, label) {
 * Eliminar ingrediente
 */
 $('.receta-ingredientes-item-borrar').on('click', function(){
-	console.log('asasas')
-	var MESSAGE = 'Quieres borrar este ingrediente?'
+
+	var nombreIngrediente = jQuery(this).attr("data-ingredientenombre")
+	var idIngrediente = jQuery(this).attr("data-ingredienteid")
+	var TITULO = 'Quieres borrar este ingrediente?'
+	var ingredienteLista = jQuery(".receta-ingredientes-lista")
+	var recetaId = jQuery("#recetaId").val()
+
 	// Abrir ventana de confirmación
 	bootbox.confirm({
 		size: 'small',
-		message: MESSAGE,
+		title: TITULO,
+		message: nombreIngrediente,
 		buttons: botonesConfirmacion,
 		callback: function(result) {
 			if(result) {
-				console.log('Borrando ingrediente...')
+				// borrar ingrediente
+				jQuery.ajax({
+					url: '/receta/'+ recetaId +'/ingrediente/' + idIngrediente,
+					type: 'GET',
+					success: function(data, status, xhr) {
+						ingredienteLista.html(data)
+					},
+					error: function(data, status, xhr) {
+						console.log("Error...")
+					}
+				})
 			}
 		}
 	})

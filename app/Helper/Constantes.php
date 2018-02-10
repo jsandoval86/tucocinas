@@ -23,6 +23,8 @@ class Constantes
 	/** Path imagenes de receta */
 	public static $PATH_IMG_RECETA = 'img/recetas/';
 
+	/** Mensaje validacion de numero de ingrediente para habilitar redireccion a preparacion */
+	public static $MSG_INGREDIENTES_LISTA_VACIA = 'Agrega Ingredientes a la lista!';
 
 }
 

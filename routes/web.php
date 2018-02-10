@@ -77,3 +77,18 @@ Route::get('/receta/{idReceta}/ingredientes', 'RecetaController@guardarIngredien
 Route::post('/receta/{idReceta}/ingredientes', 'RecetaController@guardarIngredientes')
 	->name('crear_ingredientes_receta')
 	->middleware('auth');
+
+// borrar Ingrediente
+Route::get('/receta/{idReceta}/ingrediente/{idIngrediente}', 'RecetaController@borrarIngrediente')
+	->name('borrar_ingrediente')
+	->middleware('auth');
+
+// redireccion a vista de preparacion
+Route::get('/receta/{idReceta}/preparacion/redirect', 'RecetaController@redirectPreparacion')
+	->name('redirect_preparacion')
+	->middleware('auth');
+
+// vista de preparacion
+Route::get('/receta/{idReceta}/preparacion', 'RecetaController@preparacionVista')
+	->name('receta_preparacion')
+	->middleware('auth');

@@ -278,6 +278,10 @@ textarea {
 .receta-ingredientes-crear {
 	padding-top: 10px;
 	padding-bottom: 10px;
+
+	.alert {
+		padding: 5px !important;
+	}
 }
 
 .receta-ingrediente-boton {
@@ -291,6 +295,10 @@ textarea {
 .receta-ingredientes-lista {
 	margin: 0;
 	padding: 0;
+}
+
+.receta-ingredientes-lista-wrapper {
+	padding-bottom: 50px;
 }
 
 .receta-ingredientes-item {
@@ -309,6 +317,26 @@ textarea {
 	text-decoration: none !important;
 }
 
+.receta-ingredientes-titulo {
+	color: $secondary-text-color;
+	font-size: 16px;
+	padding-top: 10px;
+	text-align: center;
+}
+
 .modal-dialog{
 	top:20%;
+}
+
+.receta-ingredientes-preparacion-btn {
+	bottom: 0;
+	padding-bottom: 5px;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+}
+
+.preparacion-continuar-btn {
+	background-color: $accent-color;
+	color: $primary-color-text;
 }

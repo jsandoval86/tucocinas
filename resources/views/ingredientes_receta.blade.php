@@ -8,6 +8,7 @@
 
 @section('content')
 	<div class="container">
+		<p class="receta-ingredientes-titulo">Que Ingredientes necesitamos?</p>
 		<div class="receta-ingredientes-crear">
 			@include('partials.session_status')
 			<form id="recetaCrearIngrediente"
@@ -15,7 +16,7 @@
 				class="receta-ingredientes-form"
 				method="POST">
 				{{csrf_field()}}
-
+				<input type="hidden" name="receta-id" value="{{$receta->id}}" id="recetaId">
 				<div class="form-group @if($errors->has('nombre')) has-error @endif">
 					<textarea rows="2" class="form-control" name="nombre"></textarea>
 					@if($errors->has('nombre'))
@@ -33,19 +34,13 @@
 		<div class="divider"></div>
 		<div class="receta-ingredientes-lista-wrapper">
 			<ul class="receta-ingredientes-lista">
-				@foreach($ingredientes as $ingrediente)
-					<li class="receta-ingredientes-item">
-					<div class="row">
-						<div class="col-xs-10 col-md-10 receta-ingredientes-item-descripcion-wrapper">
-							<p>{{$ingrediente->nombre}}</p>
-						</div>
-						<div class="col-xs-2 col-md-2">
-							<a href="#" class="glyphicon glyphicon-remove receta-ingredientes-item-borrar"></a>
-						</div>
-					</div>
-					</li>
-				@endforeach
+				@include('partials.ingredientes_receta_lista')
 			</ul>
 		</div>
+	</div>
+	<div class="receta-ingredientes-preparacion-btn">
+		<a href="{{URL::route('receta_preparacion', ['idReceta' => $receta->id])}}" class="btn preparacion-continuar-btn">
+			Continuar
+		</a>
 	</div>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -10,6 +11,8 @@ use App\Categoria;
 use App\Helper\Constantes;
 use App\Imagen;
 use App\Ingrediente;
+use Exception;
+
 
 class RecetaController extends Controller
 {
@@ -253,9 +256,74 @@ class RecetaController extends Controller
 			->route('ingredientes_receta_vista', ['idReceta' => $receta->id])
 			->with('status', Ingrediente::$EXITO_GUARDAR_HUM)
 			->with('status-type', Constantes::$STATUS_SUCCESS);
+	}
 
+	/**
+	* Borrar ingrediente
+	* @param Request $request
+	* @param $idIngrediente
+	*/
+	public function borrarIngrediente(Request $request, $idReceta, $idIngrediente) {
+		$receta = Receta::find($idReceta);
+		if (is_null($receta))
+			return 'Error 404';
+
+		$ingrediente = Ingrediente::find($idIngrediente);
+		if (is_null($ingrediente))
+			return 'Error 404';
+
+		// borrar ingrediente
+		try{
+			$ingrediente->delete();
+		}
+		catch(Exception $e){
+			Log::error($e->getMessage());
+		}
+
+		// ingredientes restantes
+		$ingredientes = $receta->ingredientes;
+
+		// construir partial
+		$htmlPartial = View::make('partials.ingredientes_receta_lista', 
+				['ingredientes' => $ingredientes]
+		);
+
+
+		return $htmlPartial;
 	}
 
 
+	/**
+	* redirección a vista de preparación
+	* @param Request $request
+	* @param $idReceta
+	*/
+	public function redirectPreparacion(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+
+		if (is_null($receta)) {
+			return 'Error 404';
+		}
+
+		if(count($receta->ingredientes) == 0) {
+			return back()
+							->with('status', Constantes::$MSG_INGREDIENTES_LISTA_VACIA)
+							->with('status-type', Constantes::$STATUS_DANGER);
+		}
+
+		return redirect()->route('receta_preparacion', 
+			['idReceta' => $receta->id]
+		);
+	}
+
+	/**
+	* Renderizar vista de preparacion
+	* @param Request $request
+	* @param $idReceta
+	*/
+	public function preparacionVista(Request $request, $idReceta) {
+		return "Preparacion";
+	}
 
 }
