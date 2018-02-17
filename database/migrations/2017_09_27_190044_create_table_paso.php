@@ -17,7 +17,6 @@ class CreateTablePaso extends Migration
 			// creando la table paso
 			Schema::create('paso', function (Blueprint $table) {
 				$table->increments('id');
-				$table->integer('prioridad')->unsigned();
 				$table->text('descripcion');
 				$table->integer('receta_id')->unsigned();
 				$table->timestamps();

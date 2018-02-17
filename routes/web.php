@@ -92,3 +92,8 @@ Route::get('/receta/{idReceta}/preparacion/redirect', 'RecetaController@redirect
 Route::get('/receta/{idReceta}/preparacion', 'RecetaController@preparacionVista')
 	->name('receta_preparacion')
 	->middleware('auth');
+
+// Guardar paso receta
+Route::post('/receta/{idReceta}/paso', 'RecetaController@guardarPasoReceta')
+	->name('receta_paso_crear')
+	->middleware('auth');

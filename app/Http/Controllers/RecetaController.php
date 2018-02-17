@@ -11,6 +11,7 @@ use App\Categoria;
 use App\Helper\Constantes;
 use App\Imagen;
 use App\Ingrediente;
+use App\Paso;
 use Exception;
 
 
@@ -323,7 +324,65 @@ class RecetaController extends Controller
 	* @param $idReceta
 	*/
 	public function preparacionVista(Request $request, $idReceta) {
-		return "Preparacion";
+
+		$receta = Receta::find($idReceta);
+		if (is_null($receta))
+			return "Error 404";
+
+		return view('preparacion_receta', [
+				'pasos' => $receta->pasos,
+				'receta' => $receta
+			]);
+	}
+
+	/**
+	* guardar paso
+	* @param Request $request
+	* @param $idReceta
+	*/
+	public function guardarPasoReceta(Request $request, $idReceta) {
+
+		$receta = Receta::find($idReceta);
+		if (is_null($receta))
+			return "Error 404";
+
+		// validar paso
+		$this->validarGuardarPaso($request);
+
+		// crear paso
+		$paso = new Paso();
+		$paso->descripcion = $request->input('descripcion');
+		$paso->receta_id = $idReceta;
+
+		// guardar paso
+		try {
+			$paso->save();
+		}
+		catch(Exception $e) {
+			Log::Error($e->getMessage);
+			return back()->with('status', Paso::$ERROR_GUARDAR)
+				->with('status-type', Constantes::$STATUS_DANGER);
+		}
+
+		// redireccionar a vista de preparación
+		return redirect()->route('receta_preparacion',[
+				'pasos' => $receta->pasos,
+				'idReceta' => $receta
+			])
+			->with('status', Paso::$MSG_SUCCESS_SAVE)
+			->with('status-type', Constantes::$STATUS_SUCCESS);
+
+	}
+
+	/**
+	* Validar datos paso preparacion receta
+	* @param Request $request
+	*/
+	private function validarGuardarPaso(Request $request) {
+		// reglas
+		$this->validate($request, [
+			'descripcion' => 'required'
+		]);
 	}
 
 }

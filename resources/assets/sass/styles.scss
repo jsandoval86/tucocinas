@@ -340,3 +340,30 @@ textarea {
 	background-color: $accent-color;
 	color: $primary-color-text;
 }
+
+.receta-preparacion-titulo {
+	color: #757575;
+	font-size: 16px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.receta-preparacion-form {
+	text-align: right;
+}
+
+.receta-pasos-lista {
+	margin: 0;
+	padding: 0;
+}
+
+.receta-paso-item {
+	border-bottom: 1px solid gainsboro;
+	padding: 5px;
+
+	.receta-paso-item-descripcion-wrapper {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+}
